@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonia Górniak | Angielski i hiszpański</title>
+  <meta name="description" content="Kolorowa, młodzieżowa strona o zajęciach z języka angielskiego. Przygotowanie do matury, C1 Advanced, IELTS i TOEFL." />
+  <style>
+    :root {
+      --bg: #fff8e8;
+      --paper: rgba(255,255,255,0.78);
+      --text: #1c2040;
+      --muted: #525a7a;
+      --pink: #ff3dbf;
+      --pink-dark: #d91ea1;
+      --yellow: #ffd83d;
+      --turquoise: #63dde0;
+      --purple: #7547ff;
+      --lime: #d7ff63;
+      --shadow: 0 20px 60px rgba(28, 32, 64, 0.16);
+      --radius: 28px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 216, 61, 0.8), transparent 20%),
+        radial-gradient(circle at 90% 15%, rgba(99, 221, 224, 0.8), transparent 18%),
+        radial-gradient(circle at 80% 75%, rgba(255, 61, 191, 0.18), transparent 22%),
+        linear-gradient(180deg, #fff8e8 0%, #fdf4ff 100%);
+      line-height: 1.5;
+    }
+
+    .shape {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(10px);
+      opacity: 0.45;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .shape.one {
+      width: 230px;
+      height: 230px;
+      background: var(--turquoise);
+      top: 120px;
+      left: -60px;
+    }
+
+    .shape.two {
+      width: 280px;
+      height: 280px;
+      background: var(--pink);
+      bottom: 90px;
+      right: -120px;
+    }
+
+    .shape.three {
+      width: 220px;
+      height: 220px;
+      background: var(--yellow);
+      top: 45%;
+      right: 10%;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255, 61, 191, 0.12);
+      border: 2px solid rgba(255, 61, 191, 0.25);
+      color: var(--pink-dark);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .tag::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 0 6px rgba(255, 61, 191, 0.15);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 248, 232, 0.72);
+      border-bottom: 1px solid rgba(28, 32, 64, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand strong {
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+    }
+
+    .brand span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .menu a,
+    .button {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 999px;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .menu a:hover,
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--pink), #ff68d0);
+      color: white;
+      box-shadow: 0 12px 24px rgba(255, 61, 191, 0.28);
+    }
+
+    .hero {
+      padding: 54px 0 32px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-copy {
+      padding: 38px;
+    }
+
+    h1, h2, h3 { margin: 0 0 16px; line-height: 1.08; }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 5.2rem);
+      letter-spacing: -0.04em;
+    }
+
+    .accent {
+      color: var(--pink-dark);
+    }
+
+    .hero-copy p {
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      color: var(--muted);
+      max-width: 58ch;
+      margin: 0 0 18px;
+    }
+
+    .hero-highlight {
+      display: inline-block;
+      background: linear-gradient(180deg, transparent 60%, rgba(255, 216, 61, 0.7) 60%);
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .ghost {
+      background: white;
+      border: 2px solid rgba(28, 32, 64, 0.08);
+      color: var(--text);
+    }
+
+    .hero-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-badge {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      background: rgba(28, 32, 64, 0.75);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 20px;
+      max-width: 300px;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+    }
+
+    .hero-badge strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3.4vw, 3.4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      max-width: 52ch;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .offer-grid,
+    .pricing-grid,
+    .about-grid,
+    .contact-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .offer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pricing-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: start;
+    }
+
+    .about-grid,
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    .tile {
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(255, 216, 61, 0.75), transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .tile h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .tile p,
+    .tile li {
+      color: var(--muted);
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .tile ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
+    .tile--pink { background: linear-gradient(180deg, rgba(255,61,191,0.14), rgba(255,255,255,0.85)); }
+    .tile--yellow { background: linear-gradient(180deg, rgba(255,216,61,0.28), rgba(255,255,255,0.85)); }
+    .tile--turquoise { background: linear-gradient(180deg, rgba(99,221,224,0.22), rgba(255,255,255,0.85)); }
+    .tile--purple { background: linear-gradient(180deg, rgba(117,71,255,0.12), rgba(255,255,255,0.85)); }
+
+    .price-box {
+      padding: 34px;
+      background: linear-gradient(135deg, var(--yellow), #ffe87f);
+      color: var(--text);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-box::before,
+    .price-box::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.28);
+    }
+
+    .price-box::before {
+      width: 220px;
+      height: 220px;
+      right: -80px;
+      top: -70px;
+    }
+
+    .price-box::after {
+      width: 140px;
+      height: 140px;
+      left: -40px;
+      bottom: -50px;
+    }
+
+    .price-box .small {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.55);
+      font-weight: 700;
+    }
+
+    .price {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1;
+      margin: 8px 0 10px;
+      color: var(--pink-dark);
+    }
+
+    .price-note {
+      font-size: 1.08rem;
+      max-width: 35ch;
+    }
+
+    .list-card {
+      padding: 28px;
+    }
+
+    .list-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 14px;
+      border-radius: 50%;
+      margin-top: 6px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      box-shadow: 0 0 0 6px rgba(255, 61, 191, 0.1);
+    }
+
+    .date-pill {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .date-pill span {
+      background: white;
+      color: var(--pink-dark);
+      font-weight: 900;
+      padding: 12px 16px;
+      border-radius: 999px;
+      box-shadow: 0 10px 20px rgba(28, 32, 64, 0.08);
+    }
+
+    .about-copy,
+    .contact-copy {
+      padding: 32px;
+    }
+
+    .about-copy p,
+    .contact-copy p {
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin: 0 0 16px;
+    }
+
+    .about-image,
+    .contact-image {
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .about-image img,
+    .contact-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.72);
+      border-radius: 22px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid rgba(28,32,64,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.65rem;
+      color: var(--pink-dark);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .contact-link {
+      flex: 1 1 220px;
+      min-width: 0;
+      background: white;
+      border-radius: 22px;
+      padding: 18px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(28,32,64,0.08);
+      box-shadow: 0 12px 24px rgba(28,32,64,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 28px rgba(28,32,64,0.1);
+    }
+
+    .contact-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-link strong {
+      display: block;
+      font-size: 1.02rem;
+      overflow-wrap: anywhere;
+    }
+
+    .cta {
+      padding-bottom: 80px;
+    }
+
+    .cta-box {
+      padding: 34px;
+      background: linear-gradient(135deg, #181c39, #3632a3);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .cta-box p {
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      max-width: 52ch;
+    }
+
+    footer {
+      padding: 0 0 40px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .pricing-grid,
+      .about-grid,
+      .contact-grid,
+      .offer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-media img,
+      .about-image img,
+      .contact-image img {
+        min-height: 360px;
+      }
+
+      .cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu {
+        justify-content: flex-start;
+      }
+
+      .hero-copy,
+      .tile,
+      .price-box,
+      .list-card,
+      .about-copy,
+      .contact-copy,
+      .cta-box {
+        padding: 24px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shape one"></div>
+  <div class="shape two"></div>
+  <div class="shape three"></div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#start">
+        <strong>Sonia Górniak</strong>
+        <span>Angielski i hiszpański</span>
+      </a>
+
+      <nav class="menu">
+        <a href="#oferta">Oferta</a>
+        <a href="#terminy">Terminy i cennik</a>
+        <a href="#o-mnie">O mnie</a>
+        <a class="button" href="#kontakt">Dołącz do zajęć</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="start">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="card hero-copy">
+          <div class="tag">Matura • Use of English • online</div>
+          <h1>
+            Ogarnij <span class="accent">Use of English</span><br />
+            bez spiny i z dobrą energią.
+          </h1>
+          <p>
+            Maj już puka do drzwi, a Ty nadal nie czujesz się pewnie z zadaniami z rozszerzonej matury? Wskakuj na intensywny pakiet spotkań online. Pracujemy konkretnie, w małej grupie i w rytmie, który naprawdę pomaga.
+          </p>
+          <p>
+            <span class="hero-highlight">Nie obiecuję cudu w trzy tygodnie</span>, ale im więcej testów zrobisz, tym lepiej poradzisz sobie na egzaminie. Just like that.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#kontakt">Chcę dołączyć</a>
+            <a class="button ghost" href="#terminy">Zobacz terminy</a>
+          </div>
+        </div>
+
+        <div class="card hero-media">
+          <img src="images/hero-sonia.jpg" alt="Sonia Górniak" />
+          <div class="hero-badge">
+            <strong>Kameralna grupa, maksimum 6 osób</strong>
+            3 poniedziałkowe wieczory po 70 minut, online na Zoomie.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="oferta">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Oferta dla maturzystów</div>
+            <h2>Mała grupa, dużo praktyki, zero przypadkowości.</h2>
+          </div>
+          <p>
+            Ten kurs jest dla osób zdających rozszerzoną maturę z angielskiego, które chcą przećwiczyć Use of English, nabrać pewności i zrobić ostatni sprint przed egzaminem.
+          </p>
+        </div>
+
+        <div class="offer-grid">
+          <article class="card tile tile--pink">
+            <h3>3 spotkania</h3>
+            <p>
+              Spotykamy się trzy razy, żeby intensywnie przećwiczyć typy zadań, które naprawdę pojawiają się na maturze.
+            </p>
+          </article>
+
+          <article class="card tile tile--turquoise">
+            <h3>70 minut działania</h3>
+            <p>
+              Każde spotkanie trwa 70 minut. Bez dłużyzn, za to z konkretem, tempem i miejscem na pytania.
+            </p>
+          </article>
+
+          <article class="card tile tile--yellow">
+            <h3>PDF po zajęciach</h3>
+            <p>
+              Po każdym spotkaniu dostajesz PDF podsumowujący zagadnienia, które pojawiły się w zadaniach.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="terminy">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Cennik i terminy</div>
+            <h2>Widzimy się online na Zoomie.</h2>
+          </div>
+          <p>
+            Zajęcia odbywają się w trzy poniedziałki. Pakiet obejmuje całość kursu i nie ma możliwości zakupu pojedynczych spotkań.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="card price-box">
+            <span class="small">Pakiet kursowy</span>
+            <div class="price">189 zł</div>
+            <p class="price-note">
+              Trzy spotkania online, materiały po zajęciach i praca w małej grupie nastawionej na wynik.
+            </p>
+            <div class="date-pill" aria-label="Terminy zajęć">
+              <span>13 kwietnia • 19:00</span>
+              <span>20 kwietnia • 19:00</span>
+              <span>27 kwietnia • 19:00</span>
+            </div>
+          </div>
+
+          <div class="card list-card">
+            <h3>Ważne informacje</h3>
+            <ul>
+              <li><span class="dot"></span><span>Zajęcia odbywają się online na platformie Zoom.</span></li>
+              <li><span class="dot"></span><span>Pakiet obejmuje wszystkie 3 spotkania.</span></li>
+              <li><span class="dot"></span><span>Nie ma możliwości zakupu uczestnictwa w pojedynczych zajęciach.</span></li>
+              <li><span class="dot"></span><span>Warunkiem rozpoczęcia zajęć jest zebranie grupy co najmniej 3 osób.</span></li>
+              <li><span class="dot"></span><span>Maksymalna liczba uczestników w grupie to 6 osób.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="o-mnie">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Kontakt i trochę o mnie</div>
+            <h2>Uczę języków od ponad 20 lat.</h2>
+          </div>
+          <p>
+            Przygotowuję do egzaminów C1 Advanced, IELTS, TOEFL i matury. Use of English to moja ulubiona część, więc właśnie tutaj lubię robić największą różnicę.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="card about-copy">
+            <h3>Cześć, mam na imię Sonia 👋</h3>
+            <p>
+              Jeśli chcesz powtórzyć materiał mądrze, bez chaosu i bez kolejnych nudnych tabelek, jesteś w dobrym miejscu. Na zajęciach stawiam na zrozumienie schematów, praktykę i spokojne budowanie pewności siebie.
+            </p>
+            <p>
+              Pracuję z osobami przygotowującymi się do matury oraz międzynarodowych egzaminów językowych. Łączę doświadczenie, energię i zadania, które mają sens.
+            </p>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>20+</strong>
+                lat uczenia
+              </div>
+              <div class="stat">
+                <strong>6</strong>
+                osób max w grupie
+              </div>
+              <div class="stat">
+                <strong>3</strong>
+                wieczory pracy
+              </div>
+            </div>
+          </div>
+
+          <div class="card about-image">
+            <img src="images/sonia-portrait.jpg" alt="Portret Soni" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container contact-grid">
+        <div class="card contact-copy">
+          <div class="tag">Dołącz do kursu</div>
+          <h2>Napisz do mnie i wskakuj na zajęcia.</h2>
+          <p>
+            Jeśli chcesz dołączyć do kursu, napisz wiadomość i daj znać, że interesuje Cię pakiet dla maturzystów. Odezwiemy się szybko i ustalimy szczegóły.
+          </p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:gorniak.sonia@gmail.com">
+              <span>E-mail</span>
+              <strong>gorniak.sonia@gmail.com</strong>
+            </a>
+            <a class="contact-link" href="#" title="Tutaj wstaw link do Instagrama lub innego kanału kontaktu">
+              <span>Social media</span>
+              <strong>Dodaj swój link tutaj</strong>
+            </a>
+          </div>
+        </div>
+
+        <div class="card contact-image">
+          <img src="images/sonia-contact.jpg" alt="Sonia Górniak kontakt" />
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="card cta-box">
+          <div>
+            <h2>Cold feet? To normalne.</h2>
+            <p>
+              Zmień stres w plan działania. Kilka dobrych spotkań potrafi odblokować więcej niż kolejny wieczór scrollowania notatek.
+            </p>
+          </div>
+          <a class="button" href="mailto:gorniak.sonia@gmail.com?subject=Chc%C4%99%20do%C5%82%C4%85czy%C4%87%20do%20kursu%20maturalnego">
+            Napisz teraz
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Sonia Górniak • Angielski i hiszpański • zajęcia online dla maturzystów
+    </div>
+  </footer>
+</body>
+</html>
